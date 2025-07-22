@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Top 10 Colors in Image</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Image Color Extractor</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit">Upload & Analyze</button>
+    </form>
+
+    {% if filename %}
+      <h2>Uploaded Image:</h2>
+      <img src="/uploads/{{ filename }}" alt="Uploaded Image" class="preview">
+    {% endif %}
+
+    {% if colors %}
+      <h2>Top 10 Colors</h2>
+      <div class="color-palette">
+        {% for color in colors %}
+          <div class="color-box" style="background-color: {{ color }}">
+            <span>{{ color }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
